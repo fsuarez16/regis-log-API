@@ -29,6 +29,7 @@ class empleadoControlador {
   }
 
   async editarEmpleado(req, res) {
+    console.log(req.body);
     if (!req.body) {
       {
         return res.status(400).send({
@@ -51,6 +52,7 @@ class empleadoControlador {
         res.send({ message: "[INFO] ACTUALIZACION CORRECTA!" });
       }
     } catch (error) {
+      console.log(error);
       res.status(500).send({
         message: "[INFO] ERROR ACTUALIZACION",
       });
@@ -59,7 +61,7 @@ class empleadoControlador {
 
   async encontrarEmpleadoId(id) {
     try {
-      const objetoEmpleado = await empleado.findOne({ id: id }).exec();
+      const objetoEmpleado = await empleado.findOne({ _id: id }).exec();
       console.log("EMPLEADO: " + objetoEmpleado);
       if (objetoEmpleado === null) {
         console.log("noExisteEmpleado");
