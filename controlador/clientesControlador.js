@@ -31,7 +31,7 @@ class clienteControlador {
   }
 
   async listaClientes(req, res) {
-    const nombre = req.query.nombreUsuario;
+    const nombre = req.query.nombreCliente;
     var condicion = nombre
       ? { nombreCliente: { $regex: new RegExp(nombre), $options: "i" } }
       : {};
@@ -58,7 +58,7 @@ class clienteControlador {
     const id = req.params.id;
 
     try {
-      const datos = await usuario.findByIdAndUpdate(id, req.body, {
+      const datos = await cliente.findByIdAndUpdate(id, req.body, {
         useFindAndModify: false,
       });
       if (!datos) {
@@ -69,6 +69,7 @@ class clienteControlador {
         res.send({ message: "[INFO] ACTUALIZACION CORRECTA!" });
       }
     } catch (error) {
+      console.log(error);
       res.status(500).send({
         message: "[INFO] ERROR ACTUALIZACION",
       });
