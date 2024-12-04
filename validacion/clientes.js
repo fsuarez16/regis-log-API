@@ -1,6 +1,10 @@
 const conexionMongo = require("mongoose");
 
 const esquemaClientes = new conexionMongo.Schema({
+  _id: {
+    type: Number,
+    required: true,
+  },
   idEmpleado: {
     type: Number,
     required: true,
