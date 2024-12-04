@@ -1,7 +1,7 @@
 const conexionMongo = require("mongoose");
 
 const esquemaEmpleado = new conexionMongo.Schema({
-  id: {
+  _id: {
     type: Number,
     required: true,
   },
